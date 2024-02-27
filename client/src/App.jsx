@@ -9,7 +9,10 @@ function App() {
     value: ""
   });
   const [tasks, setTasks] = useState([]);
-  const [localStorageState, setLocalStorageState] = useState(null)
+  const [localStorageState, setLocalStorageState] = useState(null);
+  const [isOpen, setIsOpen] = useState(false);
+  const [colors, setColors] = useState(['red', 'blue', 'yellow', 'crimson', 'green']);
+  const [color, setColor] = useState('')
  
   const handleOnchangeEvent = tega => {
     const objValue = {
@@ -27,18 +30,35 @@ function App() {
       setLocalStorageState(JSON.parse(localStorage.getItem('todo')))
     };
     
-    //setTask("")
   };
-  //childStyle4, tasks,childStyle5, childStyle3, handleDelete
+  
   const handleDelete = (item) => {
     const newTasks = tasks.filter(val => val.id !== item.id) //[make tea, clean the room]
     setTasks(newTasks)
+  };
+
+  const shuffleColors = () => {
+    const pick = Math.floor(Math.random() * 4)
+    
+    setColor(colors[pick])
+    
   }
+
+
+  const handleDisplay = () => {
+    setIsOpen(!isOpen)
+    shuffleColors()
+  };
+
+ 
   //console.log(task);
   console.log(JSON.parse(localStorage.getItem('todo')))
   return (
     <div style={parentContainer} >
-
+      {
+        isOpen ? <h3 style={{color: color}}>Omolara Understands useState</h3> : <h3></h3>
+      }
+      <button onClick={handleDisplay}>Hide</button>
       <div className="task" style={childStyle} >
         <input type="text"
           style={childStyle2}
