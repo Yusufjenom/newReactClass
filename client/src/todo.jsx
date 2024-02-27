@@ -1,12 +1,22 @@
-import React from 'react'
+import React, {useEffect, useState} from 'react'
 
-function Todo({childStyle3, childStyle4, childStyle5, handleDelete, tasks}) {
+function Todo({childStyle3, childStyle4, childStyle5, handleDelete, tasks, localStorageState}) {
+  const [state, setState] = useState(null)
+
+  useEffect(() => {
+    const getLocalStorage = () => {
+      setState(JSON.parse(localStorage.getItem('todo')))
+    }
+    getLocalStorage()
+  }, [])
+
+  console.log(state)
   return (
     <div className="tasks"
         style={childStyle4}
       >
         {
-          tasks.map(todo => (
+          state?.map(todo => (
             <div className='holder'>
             <div className="todo" style={childStyle5}
             key={todo.id}
