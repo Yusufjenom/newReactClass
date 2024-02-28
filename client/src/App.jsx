@@ -2,6 +2,7 @@ import { useState } from 'react'
 import './App.css'
 import { childStyle, childStyle2, childStyle3, childStyle4, childStyle5, parentContainer } from './style';
 import Todo from './todo';
+import ExampleuseEffect from './components/handlingUseEffect';
 
 function App() {
   const [task, setTask] = useState({
@@ -54,8 +55,15 @@ function App() {
   //console.log(task);
   console.log(JSON.parse(localStorage.getItem('todo')))
   return (
-    <div style={parentContainer} >
-      {
+
+
+
+    <div>
+      <ExampleuseEffect/>
+
+    </div>
+    // <div style={parentContainer} >
+      /* {
         isOpen ? <h3 style={{color: color}}>Omolara Understands useState</h3> : <h3></h3>
       }
       <button onClick={handleDisplay}>Hide</button>
@@ -79,9 +87,8 @@ function App() {
         childStyle3={childStyle3}
         handleDelete={handleDelete}
         localStorageState={localStorageState}
-      />
-
-    </div>
+      /> */
+     
   )
 }
 

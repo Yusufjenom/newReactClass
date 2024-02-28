@@ -1,7 +1,8 @@
 import React, {useEffect, useState} from 'react'
 
 function Todo({childStyle3, childStyle4, childStyle5, handleDelete, tasks, localStorageState}) {
-  const [state, setState] = useState(null)
+  const [state, setState] = useState(null);
+  
 
   useEffect(() => {
     const getLocalStorage = () => {
