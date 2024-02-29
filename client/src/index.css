@@ -4,3 +4,20 @@
     display: flex;
     gap: .5rem;
 }
+
+.btn{
+    height: 2.5rem;
+    width: 6rem;
+    background-color: beige;
+    color: #333;
+    border-radius: .2rem;
+}
+
+input{
+    height: 2.5rem;
+    width: 16rem;
+    background-color: #f2f3f4;
+    color: #333;
+    border-radius: .2rem;
+    border: none;
+}

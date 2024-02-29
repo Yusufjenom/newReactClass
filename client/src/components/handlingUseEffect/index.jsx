@@ -8,7 +8,7 @@ const controller = new AbortController()
     const fetchProducts = async () => {
         const response = await fetch("https://dummyjson.com/products/");
         const data = await response.json()
-        
+        console.log(response)
         if(response.ok){
             setProducts(data?.products)
         }
