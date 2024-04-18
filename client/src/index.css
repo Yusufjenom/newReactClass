@@ -21,3 +21,24 @@ input{
     border-radius: .2rem;
     border: none;
 }
+
+.loadingParent{
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.loadingChild{
+  height: 50px;
+  width: 50px;
+  border: 5px solid #fff;
+  border-top: 5px solid crimson;
+  animation: spinner 1s linear infinite;
+  border-radius: 50%;
+}
+
+@keyframes spinner {
+    0% {transform: rotate(0deg);}
+    100% {transform: rotate(360deg);}
+}
