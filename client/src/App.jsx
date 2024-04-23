@@ -4,66 +4,70 @@ import { add, subtract, addByValue, reset } from './redux/slice/counter';
 import { useSelector, useDispatch } from 'react-redux';
 import { getProducts } from './redux/slice/fetchProducts';
 import LoadingComponent from './components/loadingSpinner';
+import { RouterProvider } from 'react-router-dom';
+import { router } from './router';
 //https://dummyjson.com/products
 
 function App() {
-  const [input, setInput] = useState("");
-  const [loading, setLoading] = useState(true)
-  const currentStateOfCouterStore = useSelector(state => state.counter);
-  const { data: products, status } = useSelector(state => state.products);
-  const dispatch = useDispatch();
+  // const [input, setInput] = useState("");
+  // const [loading, setLoading] = useState(true)
+  // const currentStateOfCouterStore = useSelector(state => state.counter);
+  // const { data: products, status } = useSelector(state => state.products);
+  // const dispatch = useDispatch();
 
-  useEffect(() => {
-    dispatch(getProducts())
-  }, [])
+  // useEffect(() => {
+  //   dispatch(getProducts())
+  // }, [])
 
-  console.log(products.products)
-  console.log(status)
-  const addition = () => {
-    dispatch(add())
-  }
-  const subtraction = () => {
-    dispatch(subtract())
-  }
-  const resetFn = () => {
-    dispatch(reset())
-  }
-  const additionByValue = (payload) => {
-    console.log(payload)
-    dispatch(addByValue(payload))
-  }
-  console.log(input)
+  // console.log(products.products)
+  // console.log(status)
+  // const addition = () => {
+  //   dispatch(add())
+  // }
+  // const subtraction = () => {
+  //   dispatch(subtract())
+  // }
+  // const resetFn = () => {
+  //   dispatch(reset())
+  // }
+  // const additionByValue = (payload) => {
+  //   console.log(payload)
+  //   dispatch(addByValue(payload))
+  // }
+  // console.log(input)
 
-  if (status == "pending") {
-    return <LoadingComponent />
-  }
+  // if (status == "pending") {
+  //   return <LoadingComponent />
+  // }
 
-  if(status == "error"){
-    return <h5>error in fetching data</h5>
-  }
+  // if (status == "error") {
+  //   return <h5>error in fetching data</h5>
+  // }
 
   return (
+    <>
+      <RouterProvider router={router}/>
+    </>
+    // <div style={{ display: "flex", justifyContent: "center", alignItems: "center", height: "100vh", width: "100vw", flexDirection: "column", gap: ".5rem" }}>
 
-    <div style={{ display: "flex", justifyContent: "center", alignItems: "center", height: "100vh", width: "100vw", flexDirection: "column", gap: ".5rem" }}>
-      
-      {
-        products.products?.map((product, i) => (
-          <ItemCard title={product.title} description={product.description} price={product.price} thumbnail={product.thumbnail} />
-        ))
-      }
-      {/* <div>
-        <input type="text"  onChange={(e) => setInput(Number(e.target.value))}/>
-        <h2>{currentStateOfCouterStore}</h2>
-      </div>
+    //   {
+    //     products.products?.map((product, i) => (
+    //       <ItemCard title={product.title} description={product.description} price={product.price} thumbnail={product.thumbnail} />
+    //     ))
+    //   }
+    //   {/* <div>
+    //     <input type="text"  onChange={(e) => setInput(Number(e.target.value))}/>
+    //     <h2>{currentStateOfCouterStore}</h2>
+    //   </div>
 
 
-      <div style={{ display: "flex", gap: ".5rem" }}>
-        <button onClick={() => dispatch(add())}>add</button>
-        <button onClick={subtraction}>subtract</button>
-        <button onClick={resetFn}>reset</button>
-        <button onClick={() => additionByValue(input)}>add by value</button>
-      </div> */}
-    </div>
+    //   <div style={{ display: "flex", gap: ".5rem" }}>
+    //     <button onClick={() => dispatch(add())}>add</button>
+    //     <button onClick={subtraction}>subtract</button>
+    //     <button onClick={resetFn}>reset</button>
+    //     <button onClick={() => additionByValue(input)}>add by value</button>
+    //   </div> */}
+    // </div>
 
   )
 }
